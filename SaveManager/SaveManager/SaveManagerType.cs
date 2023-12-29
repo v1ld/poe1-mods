@@ -11,7 +11,7 @@ namespace SaveManager
         {
             get
             {
-                return "1.0.0-beta";
+                return "1.0.0";
             }
         }
 
@@ -27,7 +27,7 @@ namespace SaveManager
         {
             get
             {
-                return "SaveManager";
+                return "Save Manager";
             }
         }
 
@@ -53,16 +53,6 @@ namespace SaveManager
             string fullPath = String.Join("/", pathArray);
             FileInfo fileInfo = new FileInfo(fullPath);
             return fileInfo;
-
-            // original: (taken from IEMod; but doesn't work)
-            //string fileName = PathHelper.Combine(new string[]
-            //{
-            //    fullName,
-            //    "PillarsOfEternity_Data",
-            //    "Managed",
-            //    "Assembly-CSharp.dll"
-            //});
-            //return new FileInfo(fileName);
         }
 
         public string CanPatch(AppInfo app)

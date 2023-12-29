@@ -9,11 +9,11 @@ using System.Diagnostics;
 // associated with an assembly.
 [assembly: AssemblyTitle("SaveManager")]
 [assembly: PatchAssembly]
-[assembly: AssemblyDescription("Use PotD spawns on other difficulties")]
+[assembly: AssemblyDescription("Save manager for Pillars of Eternity 1")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("SaveManager")]
-[assembly: AssemblyCopyright("Copyright © 2023")]
+[assembly: AssemblyCopyright("Copyright ©v1ld, Dec 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: Debuggable(DebuggableAttribute.DebuggingModes.Default | DebuggableAttribute.DebuggingModes.DisableOptimizations | DebuggableAttribute.DebuggingModes.IgnoreSymbolStoreSequencePoints | DebuggableAttribute.DebuggingModes.EnableEditAndContinue)]
@@ -25,7 +25,7 @@ using System.Diagnostics;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("d2f11529-78c5-4487-9831-5a982475fe3f")]
+[assembly: Guid("1CD51E8A-221A-40EC-8975-4654BA9CF9DC")]
 
 // Version information for an assembly consists of the following four values:
 //
