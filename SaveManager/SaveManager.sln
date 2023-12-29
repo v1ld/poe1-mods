@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveManager", "SaveManager\SaveManager.csproj", "{CA9334F5-F0BE-4CCD-BBE4-F1EFDF92A044}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA9334F5-F0BE-4CCD-BBE4-F1EFDF92A044}.Debug|Any CPU.ActiveCfg = Publish|Any CPU
+		{CA9334F5-F0BE-4CCD-BBE4-F1EFDF92A044}.Debug|Any CPU.Build.0 = Publish|Any CPU
+		{CA9334F5-F0BE-4CCD-BBE4-F1EFDF92A044}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA9334F5-F0BE-4CCD-BBE4-F1EFDF92A044}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
