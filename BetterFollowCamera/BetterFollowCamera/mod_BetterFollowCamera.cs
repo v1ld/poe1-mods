@@ -28,7 +28,7 @@ namespace V1ldBetterFollowCamera
         }
 
         [ModifiesMember("DoUpdate")]
-        public void DoUpdate()
+        new public void DoUpdate()
         {
             if (!Application.isPlaying)
             {
@@ -374,7 +374,7 @@ namespace V1ldBetterFollowCamera
     class V1ld_UIAreaMap : UIAreaMap
     {
         [ModifiesMember("FocusCameraOnPointer")]
-        public void FocusCameraOnPointer()
+        new public void FocusCameraOnPointer()
         {
             if ((bool)m_uiCamera)
             {
