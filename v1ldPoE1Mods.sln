@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BetterFollowCamera", "BetterFollowCamera\BetterFollowCamera.csproj", "{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotDSpawns", "PotDSpawns\PotDSpawns.csproj", "{D4FFE66B-6C59-44E3-830E-96770D702F1B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveManager", "SaveManager\SaveManager.csproj", "{847ABA21-18F9-4726-A604-E233CC8F7C9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Publish|Any CPU = Publish|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E938A39-9A11-4FF1-9CCF-5D4F73DD8E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4FFE66B-6C59-44E3-830E-96770D702F1B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7516483-5B53-4B08-9532-21DE91F79B4E}
+	EndGlobalSection
+EndGlobal
