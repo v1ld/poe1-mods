@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotDSpawns", "PotDSpawns\Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveManager", "SaveManager\SaveManager.csproj", "{847ABA21-18F9-4726-A604-E233CC8F7C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotDStatsScale", "PotDStatsScale\PotDStatsScale.csproj", "{877551DB-CA57-46B5-B7B6-6FE808924121}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighScaleByLevel", "HighScaleByLevel\HighScaleByLevel.csproj", "{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,12 +36,12 @@ Global
 		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{847ABA21-18F9-4726-A604-E233CC8F7C9E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Publish|Any CPU.Build.0 = Publish|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{877551DB-CA57-46B5-B7B6-6FE808924121}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

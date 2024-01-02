@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{877551DB-CA57-46B5-B7B6-6FE808924121}</ProjectGuid>
+    <ProjectGuid>{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PotDStatsScale</RootNamespace>
-    <AssemblyName>PotDStatsScale.pw</AssemblyName>
+    <RootNamespace>HighScaleByLevel</RootNamespace>
+    <AssemblyName>HighScaleByLevel.pw</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -52,8 +52,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="mod_PotDStatsScale.cs" />
-    <Compile Include="PotDStatsScaleType.cs" />
+    <Compile Include="mod_HighScaleByLevel.cs" />
+    <Compile Include="HighScaleByLevelType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

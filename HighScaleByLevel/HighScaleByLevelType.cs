@@ -2,10 +2,10 @@
 using System;
 using System.IO;
 
-namespace PotDStatsScale
+namespace HighScaleByLevel
 {
     [PatchInfo]
-    public class PotDStatsScaleType : IPatchInfo
+    public class HighScaleByLevelType : IPatchInfo
     {
         public string PatchVersion
         {
@@ -27,7 +27,7 @@ namespace PotDStatsScale
         {
             get
             {
-                return "PotD Stats Scaling";
+                return "High stats scaling by level";
             }
         }
 

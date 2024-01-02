@@ -7,12 +7,12 @@ using System.Diagnostics;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PotDStatsScale")]
+[assembly: AssemblyTitle("HighScaleByLevel")]
 [assembly: PatchAssembly]
-[assembly: AssemblyDescription("PotD NPC stats changes scale with level")]
+[assembly: AssemblyDescription("Scale enemy stats on High by level")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("PotDStatsScale")]
+[assembly: AssemblyProduct("HighScaleByLevel")]
 [assembly: AssemblyCopyright("Copyright ©v1ld, Dec 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
