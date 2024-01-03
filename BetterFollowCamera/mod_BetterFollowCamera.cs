@@ -5,16 +5,21 @@ using Random = UnityEngine.Random;
 namespace V1ldBetterFollowCamera
 {
     [ModifiesType]
+    class V1ldGameState: GameState
+    {
+        // Keep follow mode active across level transitions by tracking it in GameState
+        [NewMember]
+        public static bool s_followMode;
+    }
+
+    [ModifiesType]
     class V1ld_CameraControl : CameraControl
     {
         [NewMember]
-        private bool m_followMode;
-
-        [NewMember]
         private bool FollowMode
         {
-            get { return m_followMode;  }
-            set { m_followMode = value;  }
+            get { return V1ldGameState.s_followMode;  }
+            set { V1ldGameState.s_followMode = value;  }
         }
 
         [NewMember]
@@ -71,8 +76,6 @@ namespace V1ldBetterFollowCamera
                 }
                 if (GameInput.GetDoublePressed(KeyCode.Mouse0, handle: true) && !UINoClick.MouseOverUI)
                 {
-                    // v1ld: map double click, disable follow mode
-                    CancelFollow();
                     Vector3 point = GameInput.WorldMousePosition;
                     if ((bool)GameCursor.CharacterUnderCursor)
                     {
