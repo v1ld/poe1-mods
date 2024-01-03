@@ -1,5 +1,6 @@
 ﻿using Patchwork.Attributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace V1ldBetterFollowCamera
 {
@@ -10,9 +11,16 @@ namespace V1ldBetterFollowCamera
         private bool m_followMode;
 
         [NewMember]
+        private bool FollowMode
+        {
+            get { return m_followMode;  }
+            set { m_followMode = value;  }
+        }
+
+        [NewMember]
         private void ReInitFollow()
         {
-            if (!m_followMode)
+            if (!FollowMode)
             {
                 return;
             }
@@ -92,10 +100,15 @@ namespace V1ldBetterFollowCamera
                     OrthoSettings.SetZoomLevel(1f, force: false);
                     ResetAtEdges();
                 }
+                // v1ld: Force disable follow mode if we're in combat, it's too icky otherwise
+                if (GameState.InCombat)
+                {
+                    FollowMode = false;
+                    CancelFollow();
+                }
                 // v1ld: if we're in follow mode, re-populate the units list on any action
                 // where the player may want the camera to move back to the party
-                if (m_followMode &&
-                      (GameInput.GetControlUp(MappedControl.MOVE)
+                if ((GameInput.GetControlUp(MappedControl.MOVE)
                     || GameInput.GetControlUp(MappedControl.INTERACT)
                     //|| GameInput.GetControlUp(MappedControl.ATTACK)
                     //|| GameInput.GetControlUp(MappedControl.STEALTH_TOGGLE)
@@ -104,14 +117,17 @@ namespace V1ldBetterFollowCamera
                     || GameInput.GetControlUp(MappedControl.SELECT)
                     || GameInput.GetControlUp(MappedControl.SELECT_ALL)
                     || GameInput.GetControlUp(MappedControl.MULTISELECT)))
-                {   
-                    ReInitFollow();
+                {
+                    if (FollowMode && !GameState.InCombat)
+                    {
+                        ReInitFollow();
+                    }
                 }
-                if (GameInput.GetControlUp(MappedControl.FOLLOW_CAM))
+                if (GameInput.GetControlUp(MappedControl.FOLLOW_CAM) && !GameState.InCombat)
                 {
                     // v1ld: 
-                    m_followMode = !m_followMode;
-                    if (m_followMode)
+                    FollowMode = !FollowMode;
+                    if (FollowMode)
                     {
                         ReInitFollow();
                     }
