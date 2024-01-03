@@ -106,7 +106,7 @@ namespace V1ldBetterFollowCamera
                     OrthoSettings.SetZoomLevel(1f, force: false);
                     ResetAtEdges();
                 }
-                // v1ld: Temporarily disable follow mode if we've started combat
+                // Temporarily disable follow mode if we've started combat
                 if (GameState.InCombat)
                 {
                     if (FollowMode)
@@ -116,41 +116,47 @@ namespace V1ldBetterFollowCamera
                         CancelFollow();
                     }
                 }
+                // May have just finished combat, reinitialize follow mode if needed
                 else if (ReInitFollowAfterCombat)
                 {
-                    // We're done with combat, reinitialize follow mode
                     FollowMode = true;
                     ReInitFollow();
                     ReInitFollowAfterCombat = false;
                 }
-                // v1ld: if we're in follow mode, re-populate the units list on any action
-                // where the player may want the camera to move back to the party
-                if ((GameInput.GetControlUp(MappedControl.MOVE)
-                    || GameInput.GetControlUp(MappedControl.INTERACT)
+                // Follow mode processing happens only out of combat
+                if (!GameState.InCombat)
+                {
+                    // v1ld: if we're in follow mode, re-populate the units list on any action
+                    // where the player may want the camera to move back to the party
+                    if ((GameInput.GetControlUp(MappedControl.MOVE)
+                        || GameInput.GetControlUp(MappedControl.INTERACT)
+                        || GameInput.GetControlUp(MappedControl.ROTATE_FORMATION)
+                        || GameInput.GetControlUp(MappedControl.SELECT)
+                        || GameInput.GetControlUp(MappedControl.SELECT_ALL)
+                        || GameInput.GetControlUp(MappedControl.MULTISELECT)))
                     //|| GameInput.GetControlUp(MappedControl.ATTACK)
                     //|| GameInput.GetControlUp(MappedControl.STEALTH_TOGGLE)
                     //|| GameInput.GetControlUp(MappedControl.STEALTH_ON)
                     //|| GameInput.GetControlUp(MappedControl.STEALTH_OFF)
-                    || GameInput.GetControlUp(MappedControl.SELECT)
-                    || GameInput.GetControlUp(MappedControl.SELECT_ALL)
-                    || GameInput.GetControlUp(MappedControl.MULTISELECT)))
-                {
-                    if (FollowMode && !GameState.InCombat)
                     {
-                        ReInitFollow();
+                        // The game will move the camera to center on any newly sighted enemy.
+                        // Don't re-init follow in this case, it'll snap the camera back to the party.
+                        if (FollowMode && !GameCursor.ActiveCursorIsTargeting)
+                        {
+                            ReInitFollow();
+                        }
                     }
-                }
-                if (GameInput.GetControlUp(MappedControl.FOLLOW_CAM) && !GameState.InCombat)
-                {
-                    // v1ld: 
-                    FollowMode = !FollowMode;
-                    if (FollowMode)
+                    if (GameInput.GetControlUp(MappedControl.FOLLOW_CAM))
                     {
-                        ReInitFollow();
-                    }
-                    else
-                    {
-                        CancelFollow();
+                        FollowMode = !FollowMode;
+                        if (FollowMode)
+                        {
+                            ReInitFollow();
+                        }
+                        else
+                        {
+                            CancelFollow();
+                        }
                     }
                 }
                 if (GameInput.GetControlDown(MappedControl.PAN_CAMERA))
