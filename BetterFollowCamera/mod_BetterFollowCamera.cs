@@ -23,6 +23,9 @@ namespace V1ldBetterFollowCamera
         }
 
         [NewMember]
+        private bool ReInitFollowAfterCombat;
+
+        [NewMember]
         private void ReInitFollow()
         {
             if (!FollowMode)
@@ -103,11 +106,22 @@ namespace V1ldBetterFollowCamera
                     OrthoSettings.SetZoomLevel(1f, force: false);
                     ResetAtEdges();
                 }
-                // v1ld: Force disable follow mode if we're in combat, it's too icky otherwise
+                // v1ld: Temporarily disable follow mode if we've started combat
                 if (GameState.InCombat)
                 {
-                    FollowMode = false;
-                    CancelFollow();
+                    if (FollowMode)
+                    {
+                        ReInitFollowAfterCombat = true;
+                        FollowMode = false;
+                        CancelFollow();
+                    }
+                }
+                else if (ReInitFollowAfterCombat)
+                {
+                    // We're done with combat, reinitialize follow mode
+                    FollowMode = true;
+                    ReInitFollow();
+                    ReInitFollowAfterCombat = false;
                 }
                 // v1ld: if we're in follow mode, re-populate the units list on any action
                 // where the player may want the camera to move back to the party
