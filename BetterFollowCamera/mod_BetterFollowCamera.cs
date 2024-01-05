@@ -129,10 +129,12 @@ namespace V1ldBetterFollowCamera
                         //|| GameInput.GetControlUp(MappedControl.STEALTH_ON)
                         //|| GameInput.GetControlUp(MappedControl.STEALTH_OFF)
                     {
-                        // Don't ReInit follow if the player just clicked on an enemy to start
-                        // combat, the camera will snap back to the party in an annoying fashion.
-                        // Shows up as a MOVE input, so detect this by looking at the cursor type.
-                        if (!GameCursor.ActiveCursorIsTargeting)
+                        // If the player clicks to target or interact with something, it shows up as
+                        // a MOVE here. But we should not ReInit as the camera will snap back to the
+                        // party instead of carrying out the actual action the player wanted. Detect
+                        // by looking at the cursor type involved and skip moving the camera.
+                        var cursor = GameCursor.ActiveCursor;
+                        if (!GameCursor.IsTargetCursor(cursor) && !GameCursor.IsInteractCursor(cursor))
                         {
                             ReInitFollow();
                         }
