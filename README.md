@@ -7,3 +7,4 @@ Nexus mod pages
 1. [PotD Spawns on Hard Difficulty](https://www.nexusmods.com/pillarsofeternity/mods/326/)
 2. [Save Manager](https://www.nexusmods.com/pillarsofeternity/mods/327)
 3. [Better Follow Camera](https://www.nexusmods.com/pillarsofeternity/mods/328)
+4. [Console Does Not Disable Achievements](https://www.nexusmods.com/pillarsofeternity/mods/329)
