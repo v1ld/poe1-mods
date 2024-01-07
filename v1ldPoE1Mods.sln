@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDoesNotDisableAchiev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitByHoursOrDays", "WaitByHoursOrDays\WaitByHoursOrDays.csproj", "{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuickLoadMostRecentSaveGame", "QuickLoadMostRecentSaveGame\QuickLoadMostRecentSaveGame.csproj", "{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -58,6 +60,12 @@ Global
 		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8934BA8-EE92-4C5F-8FAE-3BEE7626CC1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

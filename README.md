@@ -9,3 +9,4 @@ Nexus mod pages
 3. [Better Follow Camera](https://www.nexusmods.com/pillarsofeternity/mods/328)
 4. [Console Does Not Disable Achievements](https://www.nexusmods.com/pillarsofeternity/mods/329)
 5. [Wait By Hours Or Days](https://www.nexusmods.com/pillarsofeternity/mods/330)
+6. [QuickLoad Most Recent Save Game](https://www.nexusmods.com/pillarsofeternity/mods/331)
