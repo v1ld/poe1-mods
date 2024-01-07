@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighScaleByLevel", "HighSca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDoesNotDisableAchievements", "ConsoleDoesNotDisableAchievements\ConsoleDoesNotDisableAchievements.csproj", "{74D08402-A8C8-4C68-A159-8587966D7F3D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WaitByHoursOrDays", "WaitByHoursOrDays\WaitByHoursOrDays.csproj", "{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,12 @@ Global
 		{74D08402-A8C8-4C68-A159-8587966D7F3D}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{74D08402-A8C8-4C68-A159-8587966D7F3D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{74D08402-A8C8-4C68-A159-8587966D7F3D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{69F9062C-EEA0-4A30-ABA4-6CF659486D2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
