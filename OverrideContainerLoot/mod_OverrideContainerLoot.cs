@@ -14,7 +14,7 @@ namespace V1ldOverrideContainerLoot
         {
             string map = GameState.Instance.CurrentMap.SceneName;
             string container = this.gameObject.name;
-            OCL.Log($"Loot: Map={map} Container={container}");
+            OCL.Log($"Map={map} Container={container}");
 
             if (m_populate)
             {
@@ -27,7 +27,7 @@ namespace V1ldOverrideContainerLoot
             var items = list?.items;
             if (items != null && items.Length > 0)
             {
-                OCL.Log($"Loot: injecting {list.items.Length} items for {map}:{container}");
+                OCL.Log($"Injecting {list.items.Length} items for {map}:{container}");
                 for (int i = 0; i < items.Length; i++)
                 {
                     OCL.Log($"{i}: {items[i].count}x {items[i].item}");
@@ -138,7 +138,7 @@ namespace V1ldOverrideContainerLoot
 
         private static string Scrunch(string path)
         {
-            return "..." + path.Substring(path.Length - 60);
+            return "..." + path.Substring(path.Length - 52);
         }
     }
 
@@ -156,7 +156,7 @@ namespace V1ldOverrideContainerLoot
         public static void OCLVerbose()
         {
             V1ldGameStateOCL.s_OCLVerbose = !V1ldGameStateOCL.s_OCLVerbose;
-            OCL.Log($"Override Container Loot console messages: { (V1ldGameStateOCL.s_OCLVerbose ? "enabled" : "disabled") }", force: true);
+            Console.AddMessage($"Override Container Loot console messages: { (V1ldGameStateOCL.s_OCLVerbose ? "enabled" : "disabled") }");
         }
     }
 
@@ -167,7 +167,7 @@ namespace V1ldOverrideContainerLoot
         {
             if (V1ldGameStateOCL.s_OCLVerbose || force)
             {
-                Console.AddMessage(message);
+                Console.AddMessage($"OCL: {message}");
             }
         }
     }
