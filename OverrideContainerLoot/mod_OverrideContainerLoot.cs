@@ -131,7 +131,7 @@ namespace V1ldOverrideContainerLoot
 
         private static string GetContainerFilePath(string map, string container)
         {
-            string modPath = Path.Combine(Application.dataPath, "Managed/OCLmod");
+            string modPath = Path.Combine(Application.dataPath, "../Mods/OCLmod");
             string mapPath = Path.Combine(modPath, map);
             string containerFile = Path.Combine(mapPath, container + ".json");
             return Path.GetFullPath(containerFile);
