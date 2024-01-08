@@ -1,7 +1,7 @@
-﻿using Patchwork.Attributes;
+﻿using Newtonsoft.Json;
+using Patchwork.Attributes;
 using System;
 using System.IO;
-using System.Web.Script.Serialization;
 using UnityEngine;
 
 namespace V1ldOverrideContainerLoot
@@ -84,22 +84,25 @@ namespace V1ldOverrideContainerLoot
     {
         public V1ldItemAndCount[] items;
 
+        [JsonIgnore]
+        private static JsonSerializer serializer = new JsonSerializer();
+
         public static V1ldItemList Read(string map, string container)
         {
             string containerFile = GetContainerFilePath(map, container);
-            OCL.Log($"File: {Scrunch(containerFile)}");
             if (!File.Exists(containerFile))
             {
                 OCL.Log($"No file for {map}:{container}, skipping.");
                 return null;
             }
+            OCL.Log($"File: {Scrunch(containerFile)}");
+
             try
             {
-                using (StreamReader inputFile = new StreamReader(containerFile))
+                using (StreamReader streamReader = new StreamReader(containerFile))
+                using (JsonReader reader = new JsonTextReader(streamReader))
                 {
-                    string json = inputFile.ReadToEnd();
-                    var serializer = new JavaScriptSerializer();
-                    var itemList = serializer.Deserialize<V1ldItemList>(json);
+                    var itemList = serializer.Deserialize<V1ldItemList>(reader);
                     return itemList;
                 }
             }
@@ -116,11 +119,11 @@ namespace V1ldOverrideContainerLoot
             {
                 string containerFile = GetContainerFilePath(map, container);
                 Directory.CreateDirectory(Path.GetDirectoryName(containerFile));
-                using (StreamWriter outputFile = new StreamWriter(containerFile, false))
+
+                using (StreamWriter streamWriter = new StreamWriter(containerFile, false))
+                using (JsonWriter writer = new JsonTextWriter(streamWriter))
                 {
-                    var serializer = new JavaScriptSerializer();
-                    var serializedResult = serializer.Serialize(Items);
-                    outputFile.WriteLine(serializedResult);
+                    serializer.Serialize(writer, Items);
                 }
             }
             catch (Exception ex)

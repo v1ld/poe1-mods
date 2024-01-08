@@ -61,12 +61,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\references\Assembly-CSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\references\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Patchwork.Attributes, Version=0.9.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\references\Patchwork.Attributes.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\references\UnityEngine.dll</HintPath>
