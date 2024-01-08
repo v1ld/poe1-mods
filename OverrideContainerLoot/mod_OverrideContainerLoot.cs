@@ -25,7 +25,7 @@ namespace V1ldOverrideContainerLoot
 
             Inventory inventory = GetComponent<Inventory>();
             var items = ReadContainerFile(map, container);
-            if (items.Count > 0)
+            if (items?.Count > 0)
             {
                 OCLLog($"{items.Count} new entries for {container}");
                 foreach (var entry in items)
