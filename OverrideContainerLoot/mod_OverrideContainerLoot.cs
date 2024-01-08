@@ -1,6 +1,7 @@
 ﻿using Patchwork.Attributes;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Web.Script.Serialization;
 using UnityEngine;
@@ -13,46 +14,59 @@ namespace V1ldOverrideContainerLoot
         [ModifiesMember("PopulateInventory")]
         new public void PopulateInventory()
         {
-            Console.AddMessage("Loot: iname=" + this.gameObject.name + " map=" + GameState.Instance.CurrentMap.SceneName);
+            Console.AddMessage("Loot: Map=" + GameState.Instance.CurrentMap.SceneName + " Container=" + this.gameObject.name);
             if (m_populate)
             {
                 return;
             }
             m_populate = true;
-            object[] array = null;
-            if (LootList != null)
-            {
-                Console.AddMessage("LootList: ");
-                SetSeed();
-                array = LootList.Evaluate();
-                ResetSeed();
-            }
+
             Inventory component = GetComponent<Inventory>();
-            V1ldItemList list = V1ldItemList.Read(GameState.Instance.CurrentMap.SceneName, this.gameObject.name);
-            if (list != null && list.items != null)
+            string map = GameState.Instance.CurrentMap.SceneName;
+            string container = this.gameObject.name;
+            V1ldItemList list = V1ldItemList.Read(map, container);
+            if (list?.items != null)
             {
-                Console.AddMessage($"Loot: injecting {list.items.Length} items!");
+                Console.AddMessage($"Loot: injecting {list.items.Length} items for {map}:{container}");
                 var items = list.items;
                 for (int i = 0; i < items.Length; i++)
                 {
                     Console.AddMessage($"{i}: {items[i].count}x {items[i].item}");
                     Item item = GameResources.LoadPrefab<Item>(items[i].item, instantiate: false);
-                    component.AddItem(item, items[i].count, forceSlot: -1, original: true);
+                    if (item != null)
+                    {
+                        component.AddItem(item, items[i].count, forceSlot: -1, original: true);
+                    }
+                    else
+                    {
+                        Console.AddMessage($"ERROR: can't load item {items[i].item}!");
+                    }
                 }
             }
-            if (array == null || array.Length == 0)
+            // check to see if the game has a LootList for this container only if we didn't override
+            else
             {
-                return;
-            }
-
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (array[i] is GameObject)
+                object[] array = null;
+                if (LootList != null)
                 {
-                    Item component2 = (array[i] as GameObject).GetComponent<Item>();
-                    if ((bool)component2)
+                    SetSeed();
+                    array = LootList.Evaluate();
+                    ResetSeed();
+                }
+                if (array == null || array.Length == 0)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] is GameObject)
                     {
-                        component.AddItem(component2, 1, -1, original: true);
+                        Item component2 = (array[i] as GameObject).GetComponent<Item>();
+                        if ((bool)component2)
+                        {
+                            component.AddItem(component2, 1, -1, original: true);
+                        }
                     }
                 }
             }
@@ -71,23 +85,13 @@ namespace V1ldOverrideContainerLoot
     {
         public V1ldItemAndCount[] items;
 
-        public static V1ldItemList GetTestData()
-        {
-            V1ldItemList list = new V1ldItemList { items = new V1ldItemAndCount[2] };
-
-            for (int i = 0; i < list.items.Length; i++)
-            {
-                list.items[i] = new V1ldItemAndCount { item = "item" + i, count = i };
-            }
-            return list;
-        }
-
         public static V1ldItemList Read(string map, string container)
         {
             string containerFile = GetContainerFilePath(map, container);
+            Console.AddMessage($"File: {Scrunch(containerFile)}");
             if (!File.Exists(containerFile))
             {
-                Console.AddMessage($"Can't find container file: {containerFile}");
+                Console.AddMessage($"No file for {map}:{container}, skipping.");
                 return null;
             }
             try
@@ -111,11 +115,6 @@ namespace V1ldOverrideContainerLoot
         {
             try
             {
-                //Console.AddMessage("Directory is " + Application.dataPath);
-                //string mapPath = Path.GetFullPath(Path.Combine(Path.Combine(Application.dataPath, "Managed/OCLmod"), map));
-                //Console.AddMessage("Directory is " + mapPath);
-                //Directory.CreateDirectory(mapPath);
-                //string containerFile = Path.Combine(mapPath, container + ".json");
                 string containerFile = GetContainerFilePath(map, container);
                 using (StreamWriter outputFile = new StreamWriter(containerFile, false))
                 {
@@ -126,7 +125,6 @@ namespace V1ldOverrideContainerLoot
             }
             catch (Exception ex)
             {
-                Console.AddMessage("here");
                 Console.AddMessage($"Failed to write {ex.Message}");
             }
         }
@@ -136,8 +134,12 @@ namespace V1ldOverrideContainerLoot
             string modPath = Path.Combine(Application.dataPath, "Managed/OCLmod");
             string mapPath = Path.Combine(modPath, map);
             string containerFile = Path.Combine(mapPath, container + ".json");
-            Console.AddMessage($"Container file: {containerFile}");
             return Path.GetFullPath(containerFile);
+        }
+
+        private static string Scrunch(string path)
+        {
+            return "..." + path.Substring(path.Length - 60);
         }
     }
 }
