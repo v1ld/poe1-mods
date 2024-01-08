@@ -115,6 +115,7 @@ namespace V1ldOverrideContainerLoot
             try
             {
                 string containerFile = GetContainerFilePath(map, container);
+                Directory.CreateDirectory(Path.GetDirectoryName(containerFile));
                 using (StreamWriter outputFile = new StreamWriter(containerFile, false))
                 {
                     var serializer = new JavaScriptSerializer();
