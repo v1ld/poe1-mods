@@ -1,7 +1,5 @@
 ﻿using Patchwork.Attributes;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Web.Script.Serialization;
 using UnityEngine;
@@ -16,7 +14,7 @@ namespace V1ldOverrideContainerLoot
         {
             string map = GameState.Instance.CurrentMap.SceneName;
             string container = this.gameObject.name;
-            Console.AddMessage($"Loot: Map={map} Container={container}");
+            OCL.Log($"Loot: Map={map} Container={container}");
 
             if (m_populate)
             {
@@ -29,10 +27,10 @@ namespace V1ldOverrideContainerLoot
             var items = list?.items;
             if (items != null && items.Length > 0)
             {
-                Console.AddMessage($"Loot: injecting {list.items.Length} items for {map}:{container}");
+                OCL.Log($"Loot: injecting {list.items.Length} items for {map}:{container}");
                 for (int i = 0; i < items.Length; i++)
                 {
-                    Console.AddMessage($"{i}: {items[i].count}x {items[i].item}");
+                    OCL.Log($"{i}: {items[i].count}x {items[i].item}");
                     Item item = GameResources.LoadPrefab<Item>(items[i].item, instantiate: false);
                     if (item != null)
                     {
@@ -40,7 +38,7 @@ namespace V1ldOverrideContainerLoot
                     }
                     else
                     {
-                        Console.AddMessage($"ERROR: can't load item {items[i].item}!");
+                        OCL.Log($"ERROR: can't load item {items[i].item}!", force: true);
                     }
                 }
             }
@@ -89,10 +87,10 @@ namespace V1ldOverrideContainerLoot
         public static V1ldItemList Read(string map, string container)
         {
             string containerFile = GetContainerFilePath(map, container);
-            Console.AddMessage($"File: {Scrunch(containerFile)}");
+            OCL.Log($"File: {Scrunch(containerFile)}");
             if (!File.Exists(containerFile))
             {
-                Console.AddMessage($"No file for {map}:{container}, skipping.");
+                OCL.Log($"No file for {map}:{container}, skipping.");
                 return null;
             }
             try
@@ -107,7 +105,7 @@ namespace V1ldOverrideContainerLoot
             }
             catch (Exception ex)
             {
-                Console.AddMessage($"Caught: {ex.Message}");
+                OCL.Log($"Read failed: {ex.Message}", force: true);
                 return null;
             }
         }
@@ -126,7 +124,7 @@ namespace V1ldOverrideContainerLoot
             }
             catch (Exception ex)
             {
-                Console.AddMessage($"Failed to write {ex.Message}");
+                OCL.Log($"Write failed: {ex.Message}", force: true);
             }
         }
 
@@ -141,6 +139,36 @@ namespace V1ldOverrideContainerLoot
         private static string Scrunch(string path)
         {
             return "..." + path.Substring(path.Length - 60);
+        }
+    }
+
+    [ModifiesType]
+    class V1ldGameStateOCL : GameState
+    {
+        [NewMember]
+        public static bool s_OCLVerbose;
+    }
+
+    [ModifiesType("CommandLine")]
+    public static class V1ld_CommandLineOCL
+    {
+        [NewMember]
+        public static void OCLVerbose()
+        {
+            V1ldGameStateOCL.s_OCLVerbose = !V1ldGameStateOCL.s_OCLVerbose;
+            OCL.Log($"Override Container Loot console messages: { (V1ldGameStateOCL.s_OCLVerbose ? "enabled" : "disabled") }", force: true);
+        }
+    }
+
+    [NewType]
+    internal class OCL
+    {
+        public static void Log(string message, bool force = false)
+        {
+            if (V1ldGameStateOCL.s_OCLVerbose || force)
+            {
+                Console.AddMessage(message);
+            }
         }
     }
 }
