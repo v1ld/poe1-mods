@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Patchwork.Attributes;
 using System;
 using System.IO;
@@ -14,7 +15,7 @@ namespace V1ldOverrideContainerLoot
         {
             string map = GameState.Instance.CurrentMap.SceneName;
             string container = this.gameObject.name;
-            OCL.Log($"Map={map} Container={container}");
+            OCLLog($"Map={map} Container={container}");
 
             if (m_populate)
             {
@@ -22,24 +23,26 @@ namespace V1ldOverrideContainerLoot
             }
             m_populate = true;
 
-            Inventory component = GetComponent<Inventory>();
-            var list = V1ldItemList.Read(map, container);
-            var items = list?.items;
-            if (items != null && items.Length > 0)
+            Inventory inventory = GetComponent<Inventory>();
+            var items = ReadContainerFile(map, container);
+            if (items.Count > 0)
             {
-                OCL.Log($"Injecting {list.items.Length} items for {map}:{container}");
-                for (int i = 0; i < items.Length; i++)
+                OCLLog($"{items.Count} new entries for {container}");
+                foreach (var entry in items)
                 {
-                    OCL.Log($"{i}: {items[i].count}x {items[i].item}");
-                    Item item = GameResources.LoadPrefab<Item>(items[i].item, instantiate: false);
+                    string name = (string)entry["item"];
+                    int count = (int)entry["count"];
+                    OCLLog($"{count}x {name}");
+                    Item item = GameResources.LoadPrefab<Item>(name, instantiate: false);
                     if (item != null)
                     {
-                        component.AddItem(item, items[i].count, forceSlot: -1, original: true);
+                        inventory.AddItem(item, count, forceSlot: -1, original: true);
                     }
                     else
                     {
-                        OCL.Log($"ERROR: can't load item {items[i].item}!", force: true);
+                        OCLLog($"ERROR: can't load item {name}!", force: true);
                     }
+
                 }
             }
             // check to see if the game has a LootList for this container only if we didn't override
@@ -64,85 +67,55 @@ namespace V1ldOverrideContainerLoot
                         Item component2 = (array[i] as GameObject).GetComponent<Item>();
                         if ((bool)component2)
                         {
-                            component.AddItem(component2, 1, -1, original: true);
+                            inventory.AddItem(component2, 1, -1, original: true);
                         }
                     }
                 }
             }
         }
-    }
 
-    [NewType]
-    public class V1ldItemAndCount
-    {
-        public string item;
-        public int count;
-    }
-
-    [NewType]
-    public class V1ldItemList
-    {
-        public V1ldItemAndCount[] items;
-
-        [JsonIgnore]
-        private static JsonSerializer serializer = new JsonSerializer();
-
-        public static V1ldItemList Read(string map, string container)
+        [NewMember]
+        private static JArray ReadContainerFile(string map, string container)
         {
             string containerFile = GetContainerFilePath(map, container);
             if (!File.Exists(containerFile))
             {
-                OCL.Log($"No file for {map}:{container}, skipping.");
+                OCLLog($"No file for {map}:{container}");
                 return null;
             }
-            OCL.Log($"File: {Scrunch(containerFile)}");
+            OCLLog(containerFile);
 
             try
             {
                 using (StreamReader streamReader = new StreamReader(containerFile))
                 using (JsonReader reader = new JsonTextReader(streamReader))
                 {
-                    var itemList = serializer.Deserialize<V1ldItemList>(reader);
-                    return itemList;
+                    var json = (JObject)JToken.ReadFrom(reader);
+                    return (JArray)json["items"];
                 }
             }
             catch (Exception ex)
             {
-                OCL.Log($"Read failed: {ex.Message}", force: true);
+                OCLLog($"Read failed: {ex.Message}", force: true);
                 return null;
             }
-        }
 
-        public static void Write(string map, string container, V1ldItemList Items)
-        {
-            try
+            string GetContainerFilePath(string m, string c)
             {
-                string containerFile = GetContainerFilePath(map, container);
-                Directory.CreateDirectory(Path.GetDirectoryName(containerFile));
-
-                using (StreamWriter streamWriter = new StreamWriter(containerFile, false))
-                using (JsonWriter writer = new JsonTextWriter(streamWriter))
-                {
-                    serializer.Serialize(writer, Items);
-                }
-            }
-            catch (Exception ex)
-            {
-                OCL.Log($"Write failed: {ex.Message}", force: true);
+                string modPath = Path.Combine(Application.dataPath, "../Mods/OCLmod");
+                string mapPath = Path.Combine(modPath, m);
+                string cFile = Path.Combine(mapPath, c + ".json");
+                return Path.GetFullPath(cFile);
             }
         }
 
-        private static string GetContainerFilePath(string map, string container)
+        [NewMember]
+        private static void OCLLog(string message, bool force = false)
         {
-            string modPath = Path.Combine(Application.dataPath, "../Mods/OCLmod");
-            string mapPath = Path.Combine(modPath, map);
-            string containerFile = Path.Combine(mapPath, container + ".json");
-            return Path.GetFullPath(containerFile);
-        }
-
-        private static string Scrunch(string path)
-        {
-            return "..." + path.Substring(path.Length - 52);
+            if (V1ldGameStateOCL.s_OCLVerbose || force)
+            {
+                Console.AddMessage($"OCL: {message}");
+            }
         }
     }
 
@@ -161,18 +134,6 @@ namespace V1ldOverrideContainerLoot
         {
             V1ldGameStateOCL.s_OCLVerbose = !V1ldGameStateOCL.s_OCLVerbose;
             Console.AddMessage($"Override Container Loot console messages: { (V1ldGameStateOCL.s_OCLVerbose ? "enabled" : "disabled") }");
-        }
-    }
-
-    [NewType]
-    internal class OCL
-    {
-        public static void Log(string message, bool force = false)
-        {
-            if (V1ldGameStateOCL.s_OCLVerbose || force)
-            {
-                Console.AddMessage($"OCL: {message}");
-            }
         }
     }
 }
