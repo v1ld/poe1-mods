@@ -14,7 +14,10 @@ namespace V1ldOverrideContainerLoot
         [ModifiesMember("PopulateInventory")]
         new public void PopulateInventory()
         {
-            Console.AddMessage("Loot: Map=" + GameState.Instance.CurrentMap.SceneName + " Container=" + this.gameObject.name);
+            string map = GameState.Instance.CurrentMap.SceneName;
+            string container = this.gameObject.name;
+            Console.AddMessage($"Loot: Map={map} Container={container}");
+
             if (m_populate)
             {
                 return;
@@ -22,13 +25,11 @@ namespace V1ldOverrideContainerLoot
             m_populate = true;
 
             Inventory component = GetComponent<Inventory>();
-            string map = GameState.Instance.CurrentMap.SceneName;
-            string container = this.gameObject.name;
-            V1ldItemList list = V1ldItemList.Read(map, container);
-            if (list?.items != null)
+            var list = V1ldItemList.Read(map, container);
+            var items = list?.items;
+            if (items != null && items.Length > 0)
             {
                 Console.AddMessage($"Loot: injecting {list.items.Length} items for {map}:{container}");
-                var items = list.items;
                 for (int i = 0; i < items.Length; i++)
                 {
                     Console.AddMessage($"{i}: {items[i].count}x {items[i].item}");
