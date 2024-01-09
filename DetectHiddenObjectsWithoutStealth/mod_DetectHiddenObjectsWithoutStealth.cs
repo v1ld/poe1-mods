@@ -3,9 +3,9 @@
 namespace V1ldDetectHiddenObjectsWithoutStealth
 {
     [ModifiesType]
-    class V1ld_CharacterStatsDHOWS: CharacterStats
+    class V1ld_CharacterStatsDHOWS : CharacterStats
     {
-		[ModifiesMember("DetectionRange")]
+        [ModifiesMember("DetectionRange")]
         new public float DetectionRange(Detectable d)
         {
             int detectionRange = CalculateSkill(SkillType.Mechanics);
