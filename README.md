@@ -11,3 +11,4 @@ Nexus mod pages
 5. [Wait By Hours Or Days](https://www.nexusmods.com/pillarsofeternity/mods/330)
 6. [QuickLoad Most Recent Save Game](https://www.nexusmods.com/pillarsofeternity/mods/331)
 7. [Detect Hidden Objects Without Stealth](https://www.nexusmods.com/pillarsofeternity/mods/333)
+8. [Journal Hide Completed Quests](https://www.nexusmods.com/pillarsofeternity/mods/334)
