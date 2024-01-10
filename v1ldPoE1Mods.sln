@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRules", "HouseRules\Ho
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalHideCompletedQuests", "JournalHideCompletedQuests\JournalHideCompletedQuests.csproj", "{358B3320-D670-4CE0-9276-4B6014507C4E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadfireHighDifficulty", "DeadfireHighDifficulty\DeadfireHighDifficulty.csproj", "{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -98,6 +100,12 @@ Global
 		{358B3320-D670-4CE0-9276-4B6014507C4E}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{358B3320-D670-4CE0-9276-4B6014507C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{358B3320-D670-4CE0-9276-4B6014507C4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F2012F1-7C29-47D6-B86A-D5023A6B02D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
