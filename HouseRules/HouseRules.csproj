@@ -52,6 +52,7 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AutosaveIntermittently.cs" />
     <Compile Include="SelectionCircles.cs" />
     <Compile Include="ExpertTweaks.cs" />
     <Compile Include="HouseRulesType.cs" />
