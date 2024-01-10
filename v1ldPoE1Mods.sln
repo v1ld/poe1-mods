@@ -23,6 +23,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DetectHiddenObjectsWithoutS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HouseRules", "HouseRules\HouseRules.csproj", "{997D265B-3F0A-453C-9106-E2CD404261EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JournalHideCompletedQuests", "JournalHideCompletedQuests\JournalHideCompletedQuests.csproj", "{358B3320-D670-4CE0-9276-4B6014507C4E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,12 @@ Global
 		{997D265B-3F0A-453C-9106-E2CD404261EA}.Publish|Any CPU.Build.0 = Publish|Any CPU
 		{997D265B-3F0A-453C-9106-E2CD404261EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{997D265B-3F0A-453C-9106-E2CD404261EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Publish|Any CPU.ActiveCfg = Publish|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Publish|Any CPU.Build.0 = Publish|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{358B3320-D670-4CE0-9276-4B6014507C4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
