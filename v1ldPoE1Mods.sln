@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotDSpawns", "PotDSpawns\Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaveManager", "SaveManager\SaveManager.csproj", "{847ABA21-18F9-4726-A604-E233CC8F7C9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighScaleByLevel", "HighScaleByLevel\HighScaleByLevel.csproj", "{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScaleDifficultyByLevel", "ScaleDifficultyByLevel\ScaleDifficultyByLevel.csproj", "{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleDoesNotDisableAchievements", "ConsoleDoesNotDisableAchievements\ConsoleDoesNotDisableAchievements.csproj", "{74D08402-A8C8-4C68-A159-8587966D7F3D}"
 EndProject

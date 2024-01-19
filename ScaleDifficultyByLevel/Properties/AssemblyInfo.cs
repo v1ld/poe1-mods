@@ -7,12 +7,12 @@ using System.Diagnostics;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("HighScaleByLevel")]
+[assembly: AssemblyTitle("ScaleDifficultyByLevel")]
 [assembly: PatchAssembly]
-[assembly: AssemblyDescription("Scale enemy stats on High by level")]
+[assembly: AssemblyDescription("Scale difficulty by level")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("HighScaleByLevel")]
+[assembly: AssemblyProduct("ScaleDifficultyByLevel")]
 [assembly: AssemblyCopyright("Copyright ©v1ld, Dec 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

@@ -2,10 +2,10 @@
 using System;
 using System.IO;
 
-namespace HighScaleByLevel
+namespace ScaleDifficultyByLevel
 {
     [PatchInfo]
-    public class HighScaleByLevelType : IPatchInfo
+    public class ScaleDifficultyByLevelType : IPatchInfo
     {
         public string PatchVersion
         {

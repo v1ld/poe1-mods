@@ -7,8 +7,8 @@
     <ProjectGuid>{C8B127E4-CB6A-4F57-A977-7481AD7A4A6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HighScaleByLevel</RootNamespace>
-    <AssemblyName>HighScaleByLevel.pw</AssemblyName>
+    <RootNamespace>ScaleDifficultyByLevel</RootNamespace>
+    <AssemblyName>ScaleDifficultyByLevel.pw</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -52,8 +52,8 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="mod_HighScaleByLevel.cs" />
-    <Compile Include="HighScaleByLevelType.cs" />
+    <Compile Include="mod_ScaleDifficultyByLevel.cs" />
+    <Compile Include="ScaleDifficultyByLevelType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

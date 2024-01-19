@@ -4,7 +4,7 @@ using System.IO;
 using System;
 using UnityEngine;
 
-namespace HighScaleByLevel
+namespace ScaleDifficultyByLevel
 {
     [NewType]
     internal class V1ldScaleByLevel
