@@ -27,7 +27,7 @@ namespace ScaleDifficultyByLevel
         {
             get
             {
-                return "High stats scaling by level";
+                return "Scale Difficulty By Level";
             }
         }
 

@@ -165,9 +165,6 @@ namespace ScaleDifficultyByLevel
     [ModifiesType]
     class V1ldCharacterStats : CharacterStats
     {
-        [NewMember]
-        private V1ldScaleByLevel levelScaler = new V1ldScaleByLevel();
-
         [ModifiesMember("get_DifficultyStatBonus")]
         public float get_DifficultyStatBonus()
         {
