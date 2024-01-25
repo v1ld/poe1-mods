@@ -13,3 +13,5 @@ Nexus mod pages
 7. [Detect Hidden Objects Without Stealth](https://www.nexusmods.com/pillarsofeternity/mods/333)
 8. [Journal Hide Completed Quests](https://www.nexusmods.com/pillarsofeternity/mods/334)
 9. [Deadfire High Difficulty](https://www.nexusmods.com/pillarsofeternity/mods/336)
+10. [Scale Difficulty By Level](https://www.nexusmods.com/pillarsofeternity/mods/339)
+11. [Override Container Loot](https://www.nexusmods.com/pillarsofeternity/mods/340)
